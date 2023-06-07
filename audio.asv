@@ -1,0 +1,15 @@
+Fs=4000;channels=1; bits=16;
+r=audiorecorder(Fs,bits,channels);
+duration=5;disp('Recording started');
+recordblocking(r,duration);
+disp('Recording Stopped');
+X=getaudiodata(r);
+%sound(X,Fs,bits);
+t=0:1/Fs:(length(X)-1)/fs;
+subplot(2,1,1);plot(t,x,'linewidth',1,5);
+xlabel('time (s)');ylabel('amplitude');
+title('time domain plot of recording signal');
+n=length(X);f=0:(n-1)*Fs/n;
+y=fft(X,n);
+F_0=(-n/2:n2-1) *(Fs/n);
+Y_0=fftshift(y);
